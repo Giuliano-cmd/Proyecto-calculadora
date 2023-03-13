@@ -19,102 +19,74 @@ const boton9 = document.querySelector("#boton9");
 
 const texto = document.querySelector("#texto");
 let resultado = 0
+let resultadotemp = 0
+
+let band = false
+
 
 // Boton 1
-
 boton1.addEventListener('click', boton_1)
 
 function boton_1(){
-    resultado = resultado + 1
     texto.textContent = texto.textContent + "1"
 }
 
-// Boton 2
 
+// Boton 2
 boton2.addEventListener('click', boton_2)
 
 function boton_2(){
-    resultado = resultado + 2
     texto.textContent = texto.textContent + "2"
 }
 
-// Boton 3
 
+// Boton 3
 boton3.addEventListener('click', boton_3)
 
 function boton_3(){
-    resultado = resultado + 3
     texto.textContent = texto.textContent + "3"
     
 }
 
-// Boton 4
 
-boton4.addEventListener('click', boton_4)
-
-function boton_4(){
-    resultado = resultado + 4
-    texto.textContent = "4"
+// Boton +
+botonMas.addEventListener('click', boton_mas)
+// Funcion del boton de +
+function boton_mas(){
+    if(band === false){
+        primernum()
+        band = true
+    }
+    if(band === true){
+        resultadotemp = Number(texto.textContent)
+        resultado = resultado + resultadotemp
+        texto.textContent = ""
+        console.log(resultado)
+    }
 }
 
-// Boton 5
 
-boton5.addEventListener('click', boton_5)
-
-function boton_5(){
-    resultado = resultado + 5
-    texto.textContent = "5"
-}
-
-// Boton 6
-
-boton6.addEventListener('click', boton_6)
-
-function boton_6(){
-    resultado = resultado + 6
-    texto.textContent = "6"
-}
-
-// Boton 7
-
-boton7.addEventListener('click', boton_7)
-
-function boton_7(){
-    resultado = resultado + 7
-    texto.textContent = "7"
-}
-
-// Boton 8
-
-boton8.addEventListener('click', boton_8)
-
-function boton_8(){
-    resultado = resultado + 8
-    texto.textContent = "8"
-}
-
-// Boton 9
-
-boton9.addEventListener('click', boton_9)
-
-function boton_9(){
-    resultado = resultado + 9
-    texto.textContent = "9"
-}
-
-// Boton C
-
-botonC.addEventListener('click', boton_C)
-
-function boton_C(){
+// Funcion del primer numero de la cuenta
+function primernum(){
+    resultadotemp = Number(texto.textContent)
+    resultado = resultado + resultadotemp
     texto.textContent = ""
-    resultado = 0
+    console.log(resultado)
 }
 
-// Boton Igual
 
+// Boton =
 botonIgual.addEventListener('click', boton_igual)
 
+// Funcion del boton =
 function boton_igual(){
-    texto.textContent = resultado
+    if(band === false){
+        resultado = 0
+        console.log("Paso por false")
+    }
+    if(band === true){
+        texto.textContent = String(resultado)
+        resultado = 0
+        console.log("Paso por True")
+    }
 }
